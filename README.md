@@ -5,4 +5,4 @@ Written by [James Adam Buckland](https://github.com/ambuc). Licensed under the [
 
 Exports a function `zalgify` which applies the "zalgo" text obfuscation method. Play around with `frequency` and `intensity` for different levels and types of zalgo! You can use [the test page](https://cosmicexplorer.github.io/zalgify) to play around.
 
-![zalgify test screenshot](screenshot.png "Zalgification in action")
+![zalgify test screenshot](screenshot.png "Zalgification in action!")
