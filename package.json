@@ -1,0 +1,11 @@
+{
+  "name": "zalgify",
+  "description": "he comes",
+  "version": "0.0.0",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/cosmicexplorer/zalgify.git"
+  },
+  "main": "./zalgify.js"
+}
