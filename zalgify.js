@@ -29,4 +29,6 @@ function zalgify(string, frequency, intensity) {
   return string.join('');
 }
 
-module.exports = zalgify;
+if (typeof module !== 'undefined') {
+  module.exports = zalgify;
+}
