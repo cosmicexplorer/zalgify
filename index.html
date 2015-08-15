@@ -18,7 +18,10 @@
 <body>
 
   <nav>
-    <a class="brand-logo center">ZALGOTEST</a>
+    <a class="brand-logo center"
+       href="https://github.com/cosmicexplorer/zalgify">
+      ZALGOTEST
+    </a>
   </nav>
 
   <br/>
@@ -27,12 +30,24 @@
     <div class="row">
       <div class="input-field col s8">
         <input value="some string" id="string" type="text">
+        <label for="string" class="tooltipped active" data-position="top"
+               data-delay="50" data-tooltip="Enter a string to zalgify.">
+          Input String
+        </label>
       </div>
       <div class="input-field col s2">
         <input value="0.5" max=20 id="frequency" type="number" class="validate">
+        <label for="frequency" class="tooltipped active" data-position="top"
+               data-delay="50" data-tooltip="Frequency of diacritics used.">
+          Frequency
+        </label>
       </div>
       <div class="input-field col s2">
         <input value="3" min=0 max=20 id="intensity" type="number" class="validate">
+        <label for="intensity" class="tooltipped active" data-position="top"
+               data-delay="50" data-tooltip="Intensity of diacritics used.">
+          Intensity
+        </label>
       </div>
     </div>
     <div class='row'>
