@@ -10,10 +10,9 @@ var diacritics = [
 // flatten diacritics
 diacritics = [].concat.apply([], diacritics);
 
-//returns boolean on whether the word has been zalgified yet or not
+// returns boolean on whether the word has been zalgified yet or not
 function isZalgified(string) {
-  // console.log(escape(string[0]));
-  return (escape(string[0])=='%u200C');
+  return (string[0] === '\u200C');
 }
 
 function zalgify(string, frequency, intensity) {
@@ -33,7 +32,7 @@ function zalgify(string, frequency, intensity) {
     string[i] = zalgified;
   }
   // zero-width non-joiner
-  string.unshift('&zwnj;'); 
+  string.unshift('\u200C');
   return string.join('');
 }
 
