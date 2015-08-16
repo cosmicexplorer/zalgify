@@ -10,6 +10,10 @@ var diacritics = [
 // flatten diacritics
 diacritics = [].concat.apply([], diacritics);
 
+function isZalgified(string) {
+  // add stuff here
+}
+
 function zalgify(string, frequency, intensity) {
   string = string.split('');
   for (var i = 0; i < string.length; i++) {
@@ -30,5 +34,8 @@ function zalgify(string, frequency, intensity) {
 }
 
 if (typeof module !== 'undefined') {
-  module.exports = zalgify;
+  module.exports = {
+    zalgify: zalgify,
+    isZalgified: isZalgified
+  };
 }
