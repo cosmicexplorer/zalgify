@@ -7,83 +7,82 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/css/materialize.min.css">
 
   <style>
-    * {
-      font-family: sans-serif;
-    }
+  * {
+    font-family: sans-serif;
+  }
   </style>
 
   <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 </head>
 
+<a href="https://github.com/cosmicexplorer/zalgify"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/a6677b08c955af8400f44c6298f40e7d19cc5b2d/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677261795f3664366436642e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png"></a>
+
 <body>
-
-  <nav>
-    <a class="brand-logo center"
-       href="https://github.com/cosmicexplorer/zalgify">
-      ZALGOTEST
-    </a>
-  </nav>
-
-  <br/>
-
   <div class='container'>
     <div class="row">
-      <div class="input-field col s2">
-        <input type="checkbox" class="filled-in" id="on" checked="checked" />
-        <label for="on">Zalgify?</label>
+      <div class='col s12 center-align'>
+        <h3> ZALGOTEST </h3>
       </div>
-      <div class="input-field col s6">
-        <input value="some string" id="string" type="text">
-        <label for="string" class="tooltipped active" data-position="top"
-               data-delay="50" data-tooltip="Enter a string to zalgify.">
-          Input String
-        </label>
+      <div class="input-field col s12">
+        <textarea id="string" type='text' class="materialize-textarea">zalgify me</textarea>
       </div>
-      <div class="input-field col s2">
-        <input value="0.5" max=20 id="frequency" type="number" class="validate">
-        <label for="frequency" class="tooltipped active" data-position="top"
-               data-delay="50" data-tooltip="Frequency of diacritics used.">
-          Frequency
-        </label>
+      <div class='col s12 m6'>
+        <label for="frequency"> Frequency </label>
+        <p class="range-field">
+          <input value='5' type="range" id="frequency" min="0" max="10" />
+        </p>
       </div>
-      <div class="input-field col s2">
-        <input value="3" min=0 max=20 id="intensity" type="number" class="validate">
-        <label for="intensity" class="tooltipped active" data-position="top"
-               data-delay="50" data-tooltip="Intensity of diacritics used.">
-          Intensity
-        </label>
+      <div class='col s12 m6'>
+        <label for="intensity"> Intensity </label>
+        <p class="range-field">
+          <input value='2' type="range" id="intensity" min="0" max="20" />
+        </p>
       </div>
-    </div>
-    <div class='row'>
-      <div class='col s10'>
-        <h2 id='result'></h2>
+      <div class='col s12 center-align'>
+        <a class='btn btn-flat blue white-text waves-effect waves-light' id='copy'>copy text</a>
+        <br/>
+        <br/>
       </div>
-      <div class="input-field col s2">
-        <input type="checkbox" class="filled-in" id="is" checked="checked" />
-        <label for="is">is Zalgified?</label>
+      <div class='col s12 center-align'>
+        <h1 id='result'></h1>
       </div>
-    </div>
 
+    </div>
   </div>
+</div>
 
 </body>
 
 <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/js/materialize.min.js"></script>
 
 <script src="zalgify.js"></script>
 
 <script type="text/javascript">
-  $(document).ready(function () {
-    process();
-    $(" body ").keyup( function () { process(); });
-    $( "body" ).click( function () { process(); });
+$(document).ready(function () {
+  $('textarea').select();
+  process();
+    // $(" input ").change( function () { process(); });
+    $('textarea').on('input', function() {
+      process();
+    });
+    $('input').on('input', function() {
+      process();
+    });
+    $( "input.filled-in" ).click( function () { 
+      process(); 
+    });
+    $('#copy').click(function(){
+      copyToClipboard('#result');
+    });
   });
 
-  function process() {
+function process() {
     //if $on is checked, zalfigy
-    if( $('#on').is(':checked') ) { 
+    // if( $('#on').is(':checked') ) { 
+      if( true ) { 
       //perform zalgification
-      var z = zalgify($('#string').val(), $('#frequency').val(), $('#intensity').val());
+      var z = zalgify($('#string').val(), $('#frequency').val()/10.0, $('#intensity').val());
       //and print
       $('#result').html(z);
     } else {
@@ -91,8 +90,16 @@
       $('#result').html($('#string').val());      
     }
     // assign $is based on truth value of isZalgified of result html
-    $('#is').prop('checked', isZalgified($('#result').html()) );
+    // $('#is').prop('checked', isZalgified($('#result').html()) );
   }
-</script>
 
-</html>
+  function copyToClipboard(element) {
+    var $temp = $("<input>");
+    $("body").append($temp);
+    $temp.val($(element).text()).select();
+    document.execCommand("copy");
+    $temp.remove();
+  }
+  </script>
+
+  </html>
